@@ -1,4 +1,9 @@
-package edu.wctc;
+package edu.wctc.rooms;
+
+import edu.wctc.interfaces.Exitable;
+import edu.wctc.interfaces.Interactable;
+import edu.wctc.classes.Player;
+import edu.wctc.classes.Room;
 
 /**
  * The Boss room containing War God Grull. Implements Interactable and Exitable.

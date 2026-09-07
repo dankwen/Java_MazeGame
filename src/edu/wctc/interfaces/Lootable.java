@@ -1,4 +1,6 @@
-package edu.wctc;
+package edu.wctc.interfaces;
+
+import edu.wctc.classes.Player;
 
 /**
  * Contract guaranteeing that a Room can be looted.

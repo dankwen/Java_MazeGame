@@ -1,4 +1,4 @@
-package edu.wctc;
+package edu.wctc.classes;
 
 /**
  * The abstract blueprint for every Room in our game.

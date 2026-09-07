@@ -1,4 +1,9 @@
-package edu.wctc;
+package edu.wctc.rooms;
+
+import edu.wctc.interfaces.Interactable;
+import edu.wctc.interfaces.Lootable;
+import edu.wctc.classes.Player;
+import edu.wctc.classes.Room;
 
 /**
  * Carl's starting Room. Implements Lootable and Interactable.

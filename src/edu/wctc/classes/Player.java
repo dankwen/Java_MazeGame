@@ -1,4 +1,4 @@
-package edu.wctc;
+package edu.wctc.classes;
 
 import java.util.ArrayList;
 import java.util.List;

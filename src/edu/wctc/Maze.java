@@ -1,5 +1,14 @@
 package edu.wctc;
 
+import edu.wctc.classes.Player;
+import edu.wctc.classes.Room;
+import edu.wctc.interfaces.Exitable;
+import edu.wctc.interfaces.Interactable;
+import edu.wctc.interfaces.Lootable;
+import edu.wctc.rooms.MazeRoom;
+import edu.wctc.rooms.ShoneysRoom;
+import edu.wctc.rooms.SubwayStationRoom;
+
 /**
  * Builds the game map, manages room traversal, and delegates interactions.
  */

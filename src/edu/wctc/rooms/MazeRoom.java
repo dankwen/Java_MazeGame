@@ -22,7 +22,7 @@ public class MazeRoom extends Room implements Lootable, Interactable {
     public String getDescription() {
         String desc = "You are in a maze of twisty passages, all of which look the same.\n" +
                 "Damp stone blocks surround you, and water droplets echo through the darkness.\n" +
-                "Exits stretch out in every direction, but they feel strangely looping.";
+                "Exits stretch out in several directions, but they feel strangely looping.";
 
         // Hint injection: If Maze class dynamically connected this room to Subway (EAST)
         if (getEast() != null && getEast().getName().equals("Subway Station")) {
@@ -35,12 +35,12 @@ public class MazeRoom extends Room implements Lootable, Interactable {
     public String loot(Player player) {
         if (containsPotion) {
             containsPotion = false;
-            player.addToInventory("Healing Potion");
+            player.addToInventory("Portal Scroll");
             player.addToScore(10);
             return "\n[LOOT REPORT]:\n" +
-                    "You search a loose mortar gap in the mossy wall... Success!\n" +
-                    "You find a glowing [Healing Potion]!\n" +
-                    "Princess Donut purrs: 'Ooh, a shiny health bottle! Put it in the inventory, Carl!'\n" +
+                    "You search a loose gap in the mossy wall... Success!\n" +
+                    "You find a scroll of [Portal]!\n" +
+                    "Princess Donut purrs: 'Ooh, a magic scroll! It reads 'xyzzy'. You should try it, Carl!'\n" +
                     "(+10 points added to your score!)";
         }
         return "You search the mossy cracks again, but find nothing but damp lint.";
@@ -49,6 +49,6 @@ public class MazeRoom extends Room implements Lootable, Interactable {
     @Override
     public String interact(Player player) {
         return "You shout down the corridor. Your voice echoes endlessly in circular waves.\n" +
-                "Princess Donut grumbles: 'Carl! Stop shouting, you're ruining my hearing and I am a Princess. I have to hear my loyal subjects!'";
+                "Princess Donut grumbles: 'Carl! Stop shouting, you're ruining my hearing and I am a Princess!'";
     }
 }

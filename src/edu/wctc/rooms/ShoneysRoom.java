@@ -20,7 +20,7 @@ public class ShoneysRoom extends Room implements Lootable, Interactable {
 
     @Override
     public String getDescription() {
-        return "You are standing inside a simulated Shoney's diner, suspended in a holographic brainalyzer grid.\n" +
+        return "You are standing inside the safe room, modeled on a Shoney's diner.\n" +
                 "Vinyl booths line the walls, and the air smells faintly of pancakes and static electricity.\n" +
                 "Princess Donut, a pristine Persian cat with a tiara, is sitting on a laminate table looking deeply offended.\n" +
                 "A nervous-looking gnome-creature named Folded Jerry stands behind the cash register. Only exit is NORTH.";
@@ -44,12 +44,20 @@ public class ShoneysRoom extends Room implements Lootable, Interactable {
         return "You dig through empty pancake syrup dispensers. There is nothing left here to loot.";
     }
 
+    public boolean hasBeenLooted() {
+        return hasBeenLooted;
+    }
+
+    public String getExitBlockedMessage() {
+        return "Something's missing... You feel like you shouldn't leave the room without clothes.";
+    }
+
     @Override
     public String interact(Player player) {
         talkCount++;
         if (talkCount == 1) {
-            return "Folded Jerry stammers: 'Welcome to Shoney's! I... I wish Rick was here...'\n" +
-                    "Princess Donut snorts: 'Carl, this gnome-man is pathetic. Let's get moving.'";
+            return "Folded Jerry stammers: 'Welcome to Shoney's! I... you should put on some pants...'\n" +
+                    "Princess Donut snorts: 'Carl, this man is pathetic. Let's get moving.'";
         } else if (talkCount == 2) {
             return "Princess Donut look up at you: 'Carl, if we are going to survive this crawl, you need to find some actual pants.'";
         } else {

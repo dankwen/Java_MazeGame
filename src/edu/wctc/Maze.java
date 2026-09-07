@@ -16,6 +16,7 @@ public class Maze {
     private Room currentRoom;
     private Player player;
     private boolean isFinished;
+    private String lastFailureMessage;
 
     // Custom tracking fields for your custom Dungeon Crawler Carl loop logic
     private Room subwayStation;
@@ -26,6 +27,7 @@ public class Maze {
     public Maze() {
         this.player = new Player();
         this.isFinished = false;
+        this.lastFailureMessage = null;
         this.mazeMoves = 0;
         // The Adventure maze loop opens after a random number of moves (3 to 6)
         this.targetMoves = (int) (Math.random() * 4) + 3;
@@ -36,6 +38,7 @@ public class Maze {
     public Maze(Player player) {
         this.player = player;
         this.isFinished = false;
+        this.lastFailureMessage = null;
         this.mazeMoves = 0;
         this.targetMoves = (int) (Math.random() * 4) + 3;
         initializeRooms();
@@ -71,7 +74,13 @@ public class Maze {
     }
 
     public boolean move(char direction) {
+        if (currentRoom instanceof ShoneysRoom && direction == 'n' && !((ShoneysRoom) currentRoom).hasBeenLooted()) {
+            lastFailureMessage = ((ShoneysRoom) currentRoom).getExitBlockedMessage();
+            return false;
+        }
+
         if (currentRoom.isValidDirection(direction)) {
+            lastFailureMessage = null;
             currentRoom = currentRoom.getAdjoiningRoom(direction);
 
             // Loop Maze Logic: Every step inside an Adventure MazeRoom increments the step counter
@@ -83,6 +92,8 @@ public class Maze {
             }
             return true;
         }
+
+        lastFailureMessage = null;
         return false;
     }
 
@@ -94,12 +105,20 @@ public class Maze {
         }
     }
 
-    // Direct teleportation bypass for your classic USENET secret code "xyzzy"
+    // Direct teleportation bypass for your classic ADVENTURE! secret code "xyzzy"
     public void teleportToSubway() {
+        System.out.println("As you read the scroll magical sparks rise from the ground, surrounding you.");
+        System.out.println("Princess Donut yowls: 'CARL! Jump! It's a spatial shortcut!'");
+        System.out.println("The world fades out and you feel yourself teleporting...");
         this.currentRoom = subwayStation;
     }
 
     public String exitCurrentRoom() {
+        if (currentRoom instanceof ShoneysRoom && !((ShoneysRoom) currentRoom).hasBeenLooted()) {
+            lastFailureMessage = ((ShoneysRoom) currentRoom).getExitBlockedMessage();
+            return lastFailureMessage;
+        }
+
         if (currentRoom instanceof Exitable) {
             String result = ((Exitable) currentRoom).exit(player);
             // If the player successfully ran up the stairs (meaning the boss is dead)
@@ -122,7 +141,7 @@ public class Maze {
         if (currentRoom instanceof Lootable) {
             return ((Lootable) currentRoom).loot(player);
         }
-        return "This room is not lootable.";
+        return "You find nothing.";
     }
 
     public String getCurrentRoomDescription() {
@@ -139,6 +158,10 @@ public class Maze {
 
     public int getPlayerScore() {
         return player.getScore();
+    }
+
+    public String getLastFailureMessage() {
+        return lastFailureMessage;
     }
 
     public boolean isFinished() {

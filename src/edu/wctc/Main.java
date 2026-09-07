@@ -36,8 +36,6 @@ public class Main {
 
             // Magical Cheat-Code teleport bypass from the blatant classic ADVENTURE! game ripoff
             if (rawInput.equalsIgnoreCase("xyzzy")) {
-                System.out.println("\n*** Shimmering green particles orbit Princess Donut's tiara! ***");
-                System.out.println("Princess Donut yowls: 'CARL! Jump! It's a spatial shortcut!'");
                 maze.teleportToSubway();
                 continue;
             }
@@ -48,6 +46,8 @@ public class Main {
                 boolean hasMoved = maze.move(command);
                 if (hasMoved) {
                     System.out.println("You move through the exit...");
+                } else if (maze.getLastFailureMessage() != null) {
+                    System.out.println(maze.getLastFailureMessage());
                 } else {
                     System.out.println("There is no path leading that direction! You walk smack into a wall.");
                 }

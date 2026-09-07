@@ -25,15 +25,15 @@ public class SubwayStationRoom extends Room implements Interactable, Exitable {
     @Override
     public String getDescription() {
         if (!grullDefeated) {
-            return "You enter a cold, derelict Subway Station.\n" +
+            return "You are in a cold, derelict Subway Station.\n" +
                     "Shattered tiles litter the floor, and subway tracks disappear into the darkness.\n" +
-                    "Directly blocking the concrete stairs to the EAST exit stands the colossal **War God Grull**!\n" +
+                    "Directly blocking the concrete stairs to the EXIT stands the colossal **War God Grull**!\n" +
                     "He is a terrifying chimera—the upper torso of a muscular warrior, the head of a bull,\n" +
                     "and the massive lower body of a warhorse. He strikes his hooves against the concrete, producing sparks!\n" +
                     "You cannot leave while he blocks the exit. Prepare to INTERACT to fight!";
         } else {
             return "The Subway Station is quiet now. War God Grull has shattered into piles of digital cubes.\n" +
-                    "The concrete stairs leading EAST up to the neon EXIT sign are wide open!";
+                    "The concrete stairs leading up to the neon EXIT sign are wide open (X to leave)!";
         }
     }
 
@@ -88,7 +88,7 @@ public class SubwayStationRoom extends Room implements Interactable, Exitable {
         } else {
             player.addToScore(100); // Massive bonus for completion
             return "\n[ESCAPE REPORT]:\n" +
-                    "Carl leaps over the turnstiles with Princess Donut secure in his jacket!\n" +
+                    "Carl leaps over the turnstiles with Princess Donut secure on his shoulder!\n" +
                     "You run up the concrete stairs as the subway tunnel collapses behind you\n" +
                     "into a cascade of structural debris.\n" +
                     "CONGRATULATIONS! You have conquered this floor of the crawl!\n" +

@@ -107,9 +107,6 @@ public class Maze {
 
     // Direct teleportation bypass for your classic ADVENTURE! secret code "xyzzy"
     public void teleportToSubway() {
-        System.out.println("As you read the scroll magical sparks rise from the ground, surrounding you.");
-        System.out.println("Princess Donut yowls: 'CARL! Jump! It's a spatial shortcut!'");
-        System.out.println("The world fades out and you feel yourself teleporting...");
         this.currentRoom = subwayStation;
     }
 
